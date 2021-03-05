@@ -1,0 +1,137 @@
+{
+    "experiment": "english_ewt_basic",
+    "name": "fact_mbert",
+    "n_gpu": 1,
+
+    "model": {
+        "type": "MultiParser",
+        "args": {
+            "embeddings_processor": {
+                "type": "BertWrapper",
+                "args": {
+                    "model_path": "data/pretrained_embeddings/bert-base-multilingual-cased",
+                    "fine_tune": true,
+                    "hidden_dropout": 0.2,
+                    "attn_dropout": 0.2,
+                    "output_dropout": 0.5,
+                    "scalar_mix_layer_dropout": 0.1,
+                    "token_mask_prob": 0.15
+                }
+            },
+
+            "outputs": {
+                "heads": {
+                    "type": "ArcScorer",
+                    "args": {
+                        "scorer_class": "DeepBiaffineScorer",
+                        "head_mode": "single_head",
+                        "hidden_size": 768,
+                        "dropout": 0.33,
+                        "vocab": {
+                            "type": "IntegerVocab"
+                        }
+                    }
+                },
+                "labels": {
+                    "type": "DependencyClassifier",
+                    "args": {
+                        "scorer_class": "DeepBiaffineScorer",
+                        "hidden_size": 256,
+                        "dropout": 0.33,
+                        "vocab": {
+                            "type": "BasicVocab",
+                            "args": {
+                                "vocab_filename": "data/corpora/en_ewt/vocab/basic.vocab"
+                            }
+                        }
+                    }
+                }
+            },
+
+            "post_processors": [
+                {
+                    "type": "FactorizedMSTPostProcessor",
+                    "args": {
+                        "annotation_ids": [
+                            "heads",
+                            "labels"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+
+    "data_loaders": {
+        "type": "BucketedCONLLLoader",
+
+        "args": {
+            "annotation_layers": {
+                "heads": {
+                    "type": "TagSequence",
+                    "source_column": 6,
+                    "args": {
+                        "ignore_root": true
+                    }
+                },
+                "labels": {
+                    "type": "DependencyMatrix",
+                    "source_column": [6,7],
+                    "args": {
+                        "ignore_non_relations": true
+                    }
+                }
+            },
+
+            "batch_size": 32,
+            "bucket_size": 512,
+            "max_tokens_per_batch": 156800,
+            "num_workers": 2
+        },
+        "paths": {
+            "train": "data/corpora/en_ewt/en_ewt-ud-train.conllu",
+            "dev": "data/corpora/en_ewt/en_ewt-ud-dev.conllu",
+            "test": "data/corpora/en_ewt/en_ewt-ud-test.conllu"
+        }
+    },
+
+    "trainer": {
+        "min_epochs": 15,
+        "max_epochs": 300,
+        "early_stop": 15,
+
+        "save_dir": "data/saved_models/",
+        "save_period": 20,
+        "verbosity": 2,
+
+        "validation_criterion": {
+            "metrics": {
+                "heads": "fscore",
+                "labels": "fscore"
+            },
+            "weighting": "multiplicative"
+        },
+
+        "optimizer": {
+            "type": "AdamW",
+            "args": {
+                "lr": 4e-5,
+                "weight_decay": 0.0
+            }
+        },
+
+        "lr_scheduler": {
+            "type": "LambdaLR",
+            "args": {
+                "lr_lambda": "SqrtSchedule(400)"
+            }
+        },
+
+        "loss": {
+            "type": "CrossEntropyLoss",
+            "args": {
+                "ignore_index": -1
+            }
+        }
+    }
+}

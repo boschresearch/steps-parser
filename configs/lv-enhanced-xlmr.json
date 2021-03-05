@@ -1,0 +1,121 @@
+{
+    "experiment": "latvian_lvtb_enhanced",
+    "name": "unfact_xlmr",
+    "n_gpu": 1,
+
+    "model": {
+        "type": "MultiParser",
+        "args": {
+            "embeddings_processor": {
+                "type": "XLMRobertaWrapper",
+                "args": {
+                    "model_path": "data/pretrained_embeddings/xlm-roberta-large",
+                    "fine_tune": true,
+                    "hidden_dropout": 0.2,
+                    "attn_dropout": 0.2,
+                    "output_dropout": 0.5,
+                    "scalar_mix_layer_dropout": 0.1,
+                    "token_mask_prob": 0.15
+                }
+            },
+
+            "outputs": {
+                "dependencies": {
+                    "type": "DependencyClassifier",
+                    "args": {
+                        "scorer_class": "DeepBiaffineScorer",
+                        "hidden_size": 1024,
+                        "dropout": 0.33,
+                        "vocab": {
+                            "type": "BasicVocab",
+                            "args": {
+                                "vocab_filename": "data/corpora/lv_lvtb/enhanced_delex.vocab"
+                            }
+                        }
+                    }
+                }
+            },
+
+            "post_processors" : [
+                {
+                    "type": "UnfactorizedGreedyGraphPostProcessor",
+                    "args": {
+                        "annotation_ids": ["dependencies"]
+                    }
+                }
+            ]
+        }
+    },
+
+    "data_loaders": {
+        "type": "BucketedCONLLLoader",
+
+        "args": {
+            "annotation_layers": {
+                "dependencies": {
+                    "type": "DependencyMatrix",
+                    "source_column": 8,
+                    "args": {
+                        "ignore_root_column": true,
+                        "ignore_diagonal": true
+                    }
+                }
+            },
+
+            "keep_traces": true,
+
+            "max_sent_len": 384,
+            "batch_size": 32,
+            "bucket_size": 512,
+            "max_tokens_per_batch": 156800,
+            "num_workers": 2
+        },
+
+        "paths": {
+            "train":  "data/corpora/lv_lvtb/lv_lvtb-ud-train.delex.conllu",
+            "dev": "data/corpora/lv_lvtb/lv_lvtb-ud-dev.delex.conllu",
+            "test": "data/corpora/lv_lvtb/lv_lvtb-ud-test.conllu"
+        }
+    },
+
+   "trainer": {
+        "min_epochs": 15,
+        "max_epochs": 300,
+        "early_stop": 15,
+
+        "save_dir": "/home/gst2rng/Documents/parser_arch/saved_models/",
+        "save_period": 100,
+        "verbosity": 2,
+
+       "validation_criterion": {
+           "metrics" : {
+               "dependencies": "fscore"
+           },
+           "weighting": {
+               "dependencies": 1
+           }
+       },
+
+        "optimizer": {
+            "type": "AdamW",
+            "args": {
+                "lr": 4e-5,
+                "weight_decay": 0.0
+            }
+        },
+
+        "lr_scheduler": {
+            "type": "LambdaLR",
+            "args": {
+                "lr_lambda": "SqrtSchedule(325)"
+            }
+        },
+
+        "loss": {
+            "type": "CrossEntropyLoss",
+            "args": {
+                "ignore_index": -1
+            }
+        }
+    }
+}
