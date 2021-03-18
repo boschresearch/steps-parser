@@ -5,8 +5,7 @@
 This repository contains the companion code for STEPS, the modular [Universal Dependencies](
 https://universaldependencies.org/) parser described in the paper
 
-> [Stefan Grünewald, Annemarie Friedrich, and Jonas Kuhn (2020): **Graph-Based Universal Dependency Parsing in the Age of the Transformer:
-What Works, and What Doesn't.** arXiv:2010.12699](https://arxiv.org/abs/2010.12699)
+> [Stefan Grünewald, Annemarie Friedrich, and Jonas Kuhn (2020): **Applying Occam's Razor to Transformer-Based Dependency Parsing: What Works, What Doesn't, and What is Really Necessary.** arXiv:2010.12699](https://arxiv.org/abs/2010.12699)
 
 The code allows users to reproduce and extend the results reported in the study.
 Please cite the above paper when using our code, and direct any questions or 
