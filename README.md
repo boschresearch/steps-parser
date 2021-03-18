@@ -98,6 +98,8 @@ After training, the respective trained models will be saved to the `saved_models
 
 
 ### Parsing Corpora Using a Trained Model
+**Note:** Trained models for STEPS will be released in the coming days. For now, you can already download and try trained models for English, which are available [on Zenodo](https://zenodo.org/record/4614023#.YFJZbv4o_IE).
+
 To parse a given corpus from a CoNLL-U file, run `python src/parse_corpus.py [MODEL_DIR] [CORPUS_FILENAME] -o [OUTPUT_FILENAME]`.
 
 You can also evaluate against the input corpus directly after parsing. To do so, add the following options:
