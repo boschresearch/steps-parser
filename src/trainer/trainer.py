@@ -273,7 +273,7 @@ class Trainer:
         """
         resume_path = str(resume_path)
         self.logger.info("Loading checkpoint: {} ...".format(resume_path))
-        checkpoint = torch.load(resume_path)
+        checkpoint = torch.load(resume_path, map_location="cpu")
         self.start_epoch = checkpoint['epoch'] + 1
 
         # load architecture params from checkpoint.
