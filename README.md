@@ -98,8 +98,6 @@ After training, the respective trained models will be saved to the `saved_models
 
 
 ### Parsing Corpora Using a Trained Model
-**Note:** Trained models for STEPS will be released in the coming days. For now, you can already download and try trained models for English, which are available [on Zenodo](https://zenodo.org/record/4614023#.YFJZbv4o_IE).
-
 To parse a given corpus from a CoNLL-U file, run `python src/parse_corpus.py [MODEL_DIR] [CORPUS_FILENAME] -o [OUTPUT_FILENAME]`.
 
 You can also evaluate against the input corpus directly after parsing. To do so, add the following options:
@@ -110,6 +108,21 @@ You can also evaluate against the input corpus directly after parsing. To do so,
 To parse raw text (using the Stanza tokenizer for the provided language code), run `python src/parse_raw.py [MODEL_DIR] [LANGUAGE_CODE] [TEXT_CORPUS_FILENAME] -o [OUTPUT_FILENAMEs]`.
 
 Note: Make sure to download the appropriate Stanza model first (e.g. `stanza.download(lang="en", processors="tokenize,mwt")`).
+
+## Downloading Trained Models
+Trained models for STEPS will be released on Zenodo in the coming days. Once all models are available, we will also release a script (`download_models.sh`) for bulk download.
+
+The table below lists the already available models as well as the observed parsing accuracies on the respective test sets. Language names link to the downloadable model data.
+
+| Language                                     | UD type   | Language model | (E)LAS F1 |
+| -------------------------------------------- | --------- | -------------- | --------- |
+| [English](https://zenodo.org/record/4614023) | basic     | mBERT          |     89.26 |
+|                                              | basic     | XLM-R          |     92.00 |
+|                                              | enhanced  | XLM-R          |     90.50 |
+| [German](https://zenodo.org/record/4672061)  | basic     | mBERT          |     84.19 |
+|                                              | basic     | XLM-R          |     86.17 |
+
+**Note:** The parsing accuracies given in the table are slightly better than the numbers in our paper because we provide only the best-performing model here.
 
 ## License
 STEPS is open-sourced under the AGPL v3 license. See the [LICENSE](LICENSE) file for details.
