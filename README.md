@@ -87,7 +87,7 @@ To train your own parser model, run `python src/train.py [CONFIG_PATH] -e [EVALU
 
 We have provided two example configuration files to get started:
 * **English-EWT, basic dependencies, mBERT:** `python src/train.py configs/en-basic-mbert.json -e basic`
-* **English-EWT, enhanced dependencies, XLM-R:** `python src/train.py configs/lv-enhanced-xlmr.json -e enhanced`
+* **Latvian-LVTB, enhanced dependencies, XLM-R:** `python src/train.py configs/lv-enhanced-xlmr.json -e enhanced`
 
 (Note: Training is GPU memory intensive, particularly for the XLM-R-large model. If you run out of memory, try 
 reducing the `batch_size` in the configuration files while lowering the learning rate and raising the
@@ -124,6 +124,11 @@ The table below lists the already available models as well as the observed parsi
 |                                              | enhanced  | XLM-R          |     90.50 |
 | [German](https://zenodo.org/record/4672061)  | basic     | mBERT          |     84.19 |
 |                                              | basic     | XLM-R          |     86.17 |
+| Hindi                                        | basic     | mBERT          |           |
+|                                              | basic     | XLM-R          |           |
+| [Russian](https://zenodo.org/record/4683090) | basic     | mBERT          |     93.78 |
+|                                              | basic     | XLM-R          |     95.31 |
+|                                              | enhanced  | XLM-R          |     94.60 |
 
 **Note:** The parsing accuracies given in the table are slightly better than the numbers in our paper because we provide only the best-performing model here.
 
