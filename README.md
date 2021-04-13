@@ -116,6 +116,9 @@ The table below lists the already available models as well as the observed parsi
 
 | Language                                     | UD type   | Language model | (E)LAS F1 |
 | -------------------------------------------- | --------- | -------------- | --------- |
+| [Arabic](https://zenodo.org/record/4682936)  | basic     | mBERT          |     83.98 |
+|                                              | basic     | XLM-R          |     86.61 |
+|                                              | enhanced  | XLM-R          |     81.90 |
 | [English](https://zenodo.org/record/4614023) | basic     | mBERT          |     89.26 |
 |                                              | basic     | XLM-R          |     92.00 |
 |                                              | enhanced  | XLM-R          |     90.50 |
