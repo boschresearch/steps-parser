@@ -124,8 +124,8 @@ The table below lists the already available models as well as the observed parsi
 |                                              | enhanced  | XLM-R          |     90.50 |
 | [German](https://zenodo.org/record/4672061)  | basic     | mBERT          |     84.19 |
 |                                              | basic     | XLM-R          |     86.17 |
-| Hindi                                        | basic     | mBERT          |           |
-|                                              | basic     | XLM-R          |           |
+| [Hindi](https://zenodo.org/record/4683144)   | basic     | mBERT          |     91.45 |
+|                                              | basic     | XLM-R          |     93.43 |
 | [Russian](https://zenodo.org/record/4683090) | basic     | mBERT          |     93.78 |
 |                                              | basic     | XLM-R          |     95.31 |
 |                                              | enhanced  | XLM-R          |     94.60 |
