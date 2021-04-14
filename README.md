@@ -112,7 +112,7 @@ Note: Make sure to download the appropriate Stanza model first (e.g. `stanza.dow
 ## Downloading Trained Models
 Trained models for STEPS will be released on Zenodo in the coming days. Once all models are available, we will also release a script (`download_models.sh`) for bulk download.
 
-The table below lists the already available models as well as the observed parsing accuracies on the respective test sets. Language names link to the downloadable model data.
+The table below lists the already available models as well as the observed parsing accuracies on the respective test sets. Language names link to the downloadable model data. Note that the parsing accuracies given in the table differ slightly from the numbers in our paper because we provide only a single model here (usually the best-performing one) instead of an average.
 
 | Language                                     | UD type   | Language model | (E)LAS F1 |
 | -------------------------------------------- | --------- | -------------- | --------- |
@@ -121,6 +121,9 @@ The table below lists the already available models as well as the observed parsi
 |                                              | enhanced  | XLM-R          |     81.90 |
 | [Chinese](https://zenodo.org/record/4686799) | basic     | mBERT          |     84.99 |
 |                                              | basic     | XLM-R          |     88.02 |
+| [Czech](https://zenodo.org/record/4686859)   | basic     | mBERT          |     92.67 |
+|                                              | basic     | XLM-R          |     94.60 |
+|                                              | enhanced  | XLM-R          |     90.15 |
 | [English](https://zenodo.org/record/4614023) | basic     | mBERT          |     89.26 |
 |                                              | basic     | XLM-R          |     92.00 |
 |                                              | enhanced  | XLM-R          |     90.50 |
@@ -134,8 +137,6 @@ The table below lists the already available models as well as the observed parsi
 | [Russian](https://zenodo.org/record/4683090) | basic     | mBERT          |     93.78 |
 |                                              | basic     | XLM-R          |     95.31 |
 |                                              | enhanced  | XLM-R          |     94.60 |
-
-**Note:** The parsing accuracies given in the table differ slightly from the numbers in our paper because we provide only a single model here (usually the best-performing one) instead of an average.
 
 ## License
 STEPS is open-sourced under the AGPL v3 license. See the [LICENSE](LICENSE) file for details.
