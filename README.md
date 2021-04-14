@@ -137,6 +137,8 @@ The table below lists the already available models as well as the observed parsi
 | [Italian](https://zenodo.org/record/4686890) | basic     | mBERT          |     93.24 |
 |                                              | basic     | XLM-R          |     94.99 |
 |                                              | enhanced  | XLM-R          |     92.92 |
+| [Japanese](https://zenodo.org/record/4686927)| basic     | mBERT          |     92.27 |
+|                                              | basic     | XLM-R          |     94.27 |
 | [Russian](https://zenodo.org/record/4683090) | basic     | mBERT          |     93.78 |
 |                                              | basic     | XLM-R          |     95.31 |
 |                                              | enhanced  | XLM-R          |     94.60 |
