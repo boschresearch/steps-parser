@@ -122,6 +122,9 @@ The table below lists the already available models as well as the observed parsi
 | [English](https://zenodo.org/record/4614023) | basic     | mBERT          |     89.26 |
 |                                              | basic     | XLM-R          |     92.00 |
 |                                              | enhanced  | XLM-R          |     90.50 |
+| [Finnish](https://zenodo.org/record/4686609) | basic     | mBERT          |     89.09 |
+|                                              | basic     | XLM-R          |     94.42 |
+|                                              | enhanced  | XLM-R          |     92.79 |
 | [German](https://zenodo.org/record/4672061)  | basic     | mBERT          |     84.19 |
 |                                              | basic     | XLM-R          |     86.17 |
 | [Hindi](https://zenodo.org/record/4683144)   | basic     | mBERT          |     91.45 |
@@ -130,7 +133,7 @@ The table below lists the already available models as well as the observed parsi
 |                                              | basic     | XLM-R          |     95.31 |
 |                                              | enhanced  | XLM-R          |     94.60 |
 
-**Note:** The parsing accuracies given in the table are slightly better than the numbers in our paper because we provide only the best-performing model here.
+**Note:** The parsing accuracies given in the table differ slightly from the numbers in our paper because we provide only a single model here (usually the best-performing one) instead of an average.
 
 ## License
 STEPS is open-sourced under the AGPL v3 license. See the [LICENSE](LICENSE) file for details.
