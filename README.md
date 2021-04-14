@@ -112,7 +112,7 @@ Note: Make sure to download the appropriate Stanza model first (e.g. `stanza.dow
 ## Downloading Trained Models
 Trained models for STEPS will be released on Zenodo in the coming days. Once all models are available, we will also release a script (`download_models.sh`) for bulk download.
 
-The table below lists the already available models as well as the observed parsing accuracies on the respective test sets. Language names link to the downloadable model data. Note that the parsing accuracies given in the table differ slightly from the numbers in our paper because we provide only a single model here (usually the best-performing one) instead of an average.
+The table below lists the already available models as well as the observed parsing accuracies on the respective test sets. Language names link to the downloadable model data. Note that the parsing accuracies given in the table differ slightly from the numbers in our paper because we provide only a single model here (usually the best-performing one) instead of an average, and use gold tokenization to evaluate the enhanced models.
 
 | Language                                     | UD type   | Language model | (E)LAS F1 |
 | -------------------------------------------- | --------- | -------------- | --------- |
@@ -134,6 +134,9 @@ The table below lists the already available models as well as the observed parsi
 |                                              | basic     | XLM-R          |     86.17 |
 | [Hindi](https://zenodo.org/record/4683144)   | basic     | mBERT          |     91.45 |
 |                                              | basic     | XLM-R          |     93.43 |
+| [Italian](https://zenodo.org/record/4686890) | basic     | mBERT          |     93.24 |
+|                                              | basic     | XLM-R          |     94.99 |
+|                                              | enhanced  | XLM-R          |     92.92 |
 | [Russian](https://zenodo.org/record/4683090) | basic     | mBERT          |     93.78 |
 |                                              | basic     | XLM-R          |     95.31 |
 |                                              | enhanced  | XLM-R          |     94.60 |
